@@ -26,6 +26,13 @@
 			var replacedDotAndAtInEmail = replacedAtInEmail.replace(configRegExp.dot, '.');
 					
 			emailDomElement.attr('href', replacedDotAndAtInEmail);
+			
+			var obsfucatedEmailText = emailDomElement.text();
+			
+			var replacedAtInEmailText = obsfucatedEmailText.replace(configRegExp.at, '@');
+			var replacedDotAndAtInEmailText = replacedAtInEmailText.replace(configRegExp.dot, '.');
+					
+			emailDomElement.text(replacedDotAndAtInEmailText);
 		}
 	};
 
