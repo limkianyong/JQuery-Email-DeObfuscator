@@ -3,8 +3,9 @@ JQuery Email Deobfuscator allows you to write your email as "myemail [at] mydoma
 It's an wishful effort to fight spam while enhancing usability.
 
 Quickstart
+
 1. Given that you have an email link:
-	<a id="myEmailID" href="mailto:myemail [at] mydomain [dot] com [dot] tld">myemail [at] mydomain [dot] com [dot] tld</a>
+	&lta id="myEmailID" href="mailto:myemail [at] mydomain [dot] com [dot] tld"&gt myemail [at] mydomain [dot] com [dot] tld &lt/a&gt
 
 2.  Add the call to $().deobsfucate()
 	<script type="text/javascript">
