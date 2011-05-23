@@ -5,7 +5,7 @@ It's an wishful effort to fight spam while enhancing usability.
 Quickstart
 
 1. Given that you have an email link:
-	\< id="myEmailID" href="mailto:myemail [at] mydomain [dot] com [dot] tld"&gt myemail [at] mydomain [dot] com [dot] tld &lt/a&gt
+	&lt; id="myEmailID" href="mailto:myemail [at] mydomain [dot] com [dot] tld"&gt; myemail [at] mydomain [dot] com [dot] tld &lt;/a&gt;
 
 2.  Add the call to $().deobsfucate()
 	<script type="text/javascript">
