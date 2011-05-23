@@ -1,3 +1,10 @@
+/*!
+ * JQuery Email Deobfuscator
+ *
+ * Copyright 2011, Lim Kian Yong
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ *
+ */
 (function( $ ){ 
 
 	var settings = {
@@ -15,21 +22,22 @@
 			}			
 		},
 		deobsfucate : function( ) { 
-			var obsfucatedEmail = emailDomElement.attr('href');
-			
 			var configRegExp = {
 				at: new RegExp('\\s*' + settings.at + '\\s*', 'gi'),
 				dot: new RegExp('\\s*' + settings.dot + '\\s*', 'gi')
 			};
 			
-			var replacedAtInEmail = obsfucatedEmail.replace(configRegExp.at, '@');
-			var replacedDotAndAtInEmail = replacedAtInEmail.replace(configRegExp.dot, '.');
-					
-			emailDomElement.attr('href', replacedDotAndAtInEmail);
+			var obfuscatedEmail = emailDomElement.attr('href');			
+			if (obfuscatedEmail) {
+				var replacedAtInEmail = obfuscatedEmail.replace(configRegExp.at, '@');
+				var replacedDotAndAtInEmail = replacedAtInEmail.replace(configRegExp.dot, '.');
+						
+				emailDomElement.attr('href', replacedDotAndAtInEmail);
+			}
 			
-			var obsfucatedEmailText = emailDomElement.text();
+			var obfuscatedEmailText = emailDomElement.text();
 			
-			var replacedAtInEmailText = obsfucatedEmailText.replace(configRegExp.at, '@');
+			var replacedAtInEmailText = obfuscatedEmailText.replace(configRegExp.at, '@');
 			var replacedDotAndAtInEmailText = replacedAtInEmailText.replace(configRegExp.dot, '.');
 					
 			emailDomElement.text(replacedDotAndAtInEmailText);

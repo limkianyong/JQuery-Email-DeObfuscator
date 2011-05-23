@@ -3,7 +3,7 @@
 	function arrangeAnchorLinkForEmailWith(obfuscatedEmail, emailLinkId) {
 		$('#qunit-fixture').append(
 			$('<a>' + obfuscatedEmail + '</a>').attr('id', emailLinkId)
-						.attr('href', obfuscatedEmail)
+						.attr('href', 'mailto:' + obfuscatedEmail)
 		);
 	}
 
@@ -11,11 +11,11 @@
 	
 	test("Replace '[at]' with '@' and '[dot]' with '.' in the href and text", function(){
 		// arrange
-		var obsfucatedEmail = "mailto:myemail [at] mydomain [dot] com [dot] my";
+		var obfuscatedEmail = "myemail [at] mydomain [dot] com [dot] my";
 		var emailLinkId = 'emailLink';
-		arrangeAnchorLinkForEmailWith(obsfucatedEmail, emailLinkId);
+		arrangeAnchorLinkForEmailWith(obfuscatedEmail, emailLinkId);
 		
-		var expectedEmail = "mailto:myemail@mydomain.com.my";
+		var expectedEmail = "myemail@mydomain.com.my";
 		
 		// act
 		$('#' + emailLinkId).deobsfucate();
@@ -26,11 +26,11 @@
 	
 	test("Given custom config settings for at, deobfuscate should replace custom at with '@'", function() {
 		// arrange 
-		var obsfucatedEmail = "mailto:customEmail customAt mydomain customDot com customDot my";
+		var obfuscatedEmail = "customEmail customAt mydomain customDot com customDot my";
 		var emailLinkId = 'emailLink2';
-		arrangeAnchorLinkForEmailWith(obsfucatedEmail, emailLinkId);
+		arrangeAnchorLinkForEmailWith(obfuscatedEmail, emailLinkId);
 		
-		var expectedEmail = "mailto:customEmail@mydomain.com.my";
+		var expectedEmail = "customEmail@mydomain.com.my";
 		
 		// act
 		$('#' + emailLinkId).deobsfucate({
@@ -42,8 +42,42 @@
 		assertHrefAndTextEquals(emailLinkId, expectedEmail);
 	});
 	
-	function assertHrefAndTextEquals(emailLinkId, expectedEmail) {	
+	test("When anchor's href does not exist, deobfuscate the text should be successful", function() {
+		// arrange
+		var obfuscatedEmail = "customEmail customAt mydomain customDot com customDot my";
+		var emailLinkId = 'emailLink3';
+		$('#qunit-fixture').append(
+			$('<a>' + obfuscatedEmail + '</a>').attr('id', emailLinkId)
+		);
+		var expectedEmail = "customEmail@mydomain.com.my";
+		
+		// act
+		$('#' + emailLinkId).deobsfucate();
+		
+		// assert
+		equal($('#' + emailLinkId).text(), expectedEmail);
+	});
+	
+	test("When anchor's text is not the same as the href, deobfuscate the href should be successful", function() {
+		// arrange
+		var obfuscatedEmail = "customEmail customAt mydomain customDot com customDot my";
+		var emailLinkId = 'emailLink3';
+		$('#qunit-fixture').append(
+			$('<a>' + 'random email text' + '</a>').attr('id', emailLinkId)
+				.attr('href', obfuscatedEmail)
+		);
+		var expectedEmail = "customEmail@mydomain.com.my";
+		
+		// act
+		$('#' + emailLinkId).deobsfucate();
+		
+		// assert
 		equal($('#' + emailLinkId).attr('href'), expectedEmail);
+		equal($('#' + emailLinkId).text(), 'random email text');
+	});
+	
+	function assertHrefAndTextEquals(emailLinkId, expectedEmail) {	
+		equal($('#' + emailLinkId).attr('href'), 'mailto:' + expectedEmail);
 		equal($('#' + emailLinkId).text(), expectedEmail);
 	};
 	
