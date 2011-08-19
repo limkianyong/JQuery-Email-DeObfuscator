@@ -1,15 +1,23 @@
-JQuery Email Deobfuscator allows you to write your email as "myemail [at] mydomain [dot] com [dot] tld" but display it as "myemail@mydomain.com.tld" to the user. 
+<h1>JQuery Email Deobfuscator allows you to write your email as "myemail [at] mydomain [dot] com [dot] tld" but display it as "myemail@mydomain.com.tld" to the user. </h1>
 
-It's an wishful effort to fight spam while enhancing usability.
+<p>It's an wishful effort to fight spam while enhancing usability.</p>
 
-Quickstart
+<h3>Quickstart</h3>
 
-1. Given that you have an email link:
-	&lt; id="myEmailID" href="mailto:myemail [at] mydomain [dot] com [dot] tld"&gt; myemail [at] mydomain [dot] com [dot] tld &lt;/a&gt;
-
-2.  Add the call to $().deobsfucate()
-	<script type="text/javascript">
+<ol>
+  <li>
+    <p>Given that you have an email link:</p>
+    <code>&lt; id="myEmailID" href="mailto:myemail [at] mydomain [dot] com [dot] tld"&gt; myemail [at] mydomain [dot] com [dot] tld &lt;/a&gt;</code>
+  </li>
+  <li>
+    <p>2.  Add the call to $().deobsfucate()</p>
+    <code>
+	&lt;script type="text/javascript">
 		$('#myEmailID').deobsfucate();
-	</script>
-	
-3. That's all. Try it now!
+	&lt;/script>
+    </code>
+  </li>
+  <li>
+    <p>That's all. Try it now!</p>
+  </li>
+</ol>
