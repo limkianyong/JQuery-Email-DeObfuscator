@@ -44,12 +44,13 @@
 		}
 	};
 
-	$.fn.deobsfucate = function( method ) { 
+	$.fn.deobsfucate = function() { 
 
 		emailDomElement = $(this);
 		methods.init.apply( this, arguments );
 		methods.deobsfucate();
 		
+		return $(this);
 	};
 
 })( jQuery );

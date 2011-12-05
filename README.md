@@ -7,7 +7,7 @@
 <ol>
   <li>
     <p>Given that you have an email link:</p>
-    <code>&lt; id="myEmailID" href="mailto:myemail [at] mydomain [dot] com [dot] tld"&gt; myemail [at] mydomain [dot] com [dot] tld &lt;/a&gt;</code>
+    <code>&lt;a id="myEmailID" href="mailto:myemail [at] mydomain [dot] com [dot] tld"&gt; myemail [at] mydomain [dot] com [dot] tld &lt;/a&gt;</code>
   </li>
   <li>
     <p>2.  Add the call to $().deobsfucate()</p>

@@ -76,6 +76,23 @@
 		equal($('#' + emailLinkId).text(), 'random email text');
 	});
 	
+	test("deobfuscate should return this", function() {
+		// arrange
+		var obfuscatedEmail = "customEmail customAt mydomain customDot com customDot my";
+		var emailLinkId = 'emailLink3';
+		$('#qunit-fixture').append(
+			$('<a>' + 'random email text' + '</a>').attr('id', emailLinkId)
+				.attr('href', obfuscatedEmail)
+		);
+		var expectedEmail = "customEmail@mydomain.com.my";
+		
+		// act
+		var actual = $('#' + emailLinkId).deobsfucate();
+		
+		// assert
+		equal(actual.attr('id'), emailLinkId);
+	});
+	
 	function assertHrefAndTextEquals(emailLinkId, expectedEmail) {	
 		equal($('#' + emailLinkId).attr('href'), 'mailto:' + expectedEmail);
 		equal($('#' + emailLinkId).text(), expectedEmail);
