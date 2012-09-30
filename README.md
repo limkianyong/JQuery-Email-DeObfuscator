@@ -10,7 +10,7 @@
     <code>&lt;a id="myEmailID" href="mailto:myemail [at] mydomain [dot] com [dot] tld"&gt; myemail [at] mydomain [dot] com [dot] tld &lt;/a&gt;</code>
   </li>
   <li>
-    <p>2.  Add the call to $().deobsfucate()</p>
+    <p>Add the call to $().deobsfucate()</p>
     <code>
 	&lt;script type="text/javascript">
 		$('#myEmailID').deobsfucate();
